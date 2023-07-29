@@ -154,6 +154,9 @@ h2 {
 
       &.status.inprogress {
         background-color: rgb(78, 173, 250);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-size: 10px;
 
       }
