@@ -1,0 +1,27 @@
+.dialog-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-fields,
+.datepicker-class {
+  padding: 0;
+}
+
+.datepicker-class {
+  ::ng-deep .mat-mdc-form-field {
+    display: block !important;
+    width: 78%;
+    margin-left: 30px;
+  }
+}
+
+.add-btn {
+  background-color: #673ab7;
+}
+
+.btn-text {
+  color: whitesmoke;
+}

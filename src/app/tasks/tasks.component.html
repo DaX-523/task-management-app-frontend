@@ -1,0 +1,52 @@
+<h2>All Tasks</h2>
+
+<div class="btn">
+  <button mat-raised-button color="primary" type="button" (click)="shownewForm()">Add New Task
+  </button>
+  <mat-form-field>
+    <mat-label>Sort By</mat-label>
+    <mat-select [(ngModel)]="sortBy">
+      <mat-option *ngFor="let sortType of sortTypes" [value]="sortType" (click)="fetchTasks()">
+        {{sortType}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="new-form" *ngIf="renderForm">
+    <app-addtask (closeDialog)="shownewForm()"></app-addtask>
+  </div>
+</div>
+
+
+<div class="tasks-list" *ngIf="tasks.length else elseBlock">
+  <mat-card *ngFor="let task of tasks" class="card">
+    <mat-card-header>
+      <div class="card-header">
+        <mat-card-title>{{task.title}}</mat-card-title>
+        <span class="priority"
+          [ngClass]="{'low': task.priority.toUpperCase() === 'LOW', 'medium': task.priority.toUpperCase() === 'MEDIUM','high': task.priority.toUpperCase() === 'HIGH'}">{{task.priority
+          | titlecase}}</span>
+        <span class="status"
+          [ngClass]="{'todo': task.status === 'To-Do', 'inprogress': task.status === 'In-Progress','completed': task.status === 'Completed'}">{{task.status}}</span>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Due: {{task.duedate}}</p>
+      <p>{{task.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="card-btn" mat-fab color="gray" (click)="openDialog(task)"><mat-icon>edit</mat-icon></button>
+      <button class="card-btn" mat-fab color="warn" (click)="onDelete(task._id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+
+  <div class="btn-div">
+    <button class="download-btn" mat-flat-button color="primary" (click)="download()">Download CSV</button>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <h2>No Tasks To Show!</h2>
+</ng-template>

@@ -1,0 +1,47 @@
+<div class="dialog-box">
+  <h1 mat-dialog-title>Editing task: {{ data.data.title }}</h1>
+  <div class="input-fields" mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="title">
+    </mat-form-field>
+  </div>
+  <div class="input-fields" mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="description">
+    </mat-form-field>
+  </div>
+
+  <div class="datepicker-class" mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Due Date: </mat-label>
+      <input matInput [matDatepicker]="picker" type="date" [(ngModel)]="duedate">
+      <mat-hint>YYYYY/MM/DD</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select [(value)]="priority">
+      <mat-option *ngFor="let priority of priorities" [value]="priority">
+        {{priority}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Task Status</mat-label>
+    <mat-select [(value)]="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">
+        {{status}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button class="add-btn" color="primary" mat-button (click)="onAddClick()" cdkFocusInitial><span
+        class="btn-text">Save</span></button>
+  </div>
+</div>
