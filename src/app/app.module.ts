@@ -26,12 +26,14 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
 
 
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { HistoryLogsComponent } from './history-logs/history-logs.component';
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     AddtaskComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    HistoryLogsComponent,
   ],
   imports: [
     BrowserModule,

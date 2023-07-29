@@ -6,6 +6,8 @@ import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { RefreshList } from '../task.actions';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -16,6 +18,7 @@ import { RefreshList } from '../task.actions';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
+  history: [] = [];
   sortTypes: String[] = ['DueDate', 'Priority', 'Status'];
   renderForm = false;
   sortBy: String = "";
@@ -23,7 +26,8 @@ export class TasksComponent implements OnInit {
   constructor(
     private tasksService: TasksService,
     private store: Store<{ reloadState: boolean }>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
     store.select('reloadState')
       .subscribe((data: any) => {
@@ -74,6 +78,10 @@ export class TasksComponent implements OnInit {
       subscribe(data => {
         this.downLoadFile(data, 'text/csv')
       })
+  }
+
+  getHistory() {
+    this.router.navigate(['/history'])
   }
 
   shownewForm(): void {

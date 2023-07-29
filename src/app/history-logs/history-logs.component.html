@@ -1,0 +1,24 @@
+<div *ngIf="history.length else elseBlock">
+  <h5>Note: previousValue and newValue are in order of Title, Description, Duedate, Priority and Status respectively.
+  </h5>
+  <div class="table">
+    <table>
+      <tr>
+        <th>Task Id</th>
+        <th>Previous Value</th>
+        <th>New Value</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let hist of history">
+        <td>{{ hist.taskId }}</td>
+        <td>{{ hist.previousValue?.join(", ") }}</td>
+        <td>{{ hist.newValue?.join(", ") }}</td>
+        <td>{{ hist.action }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  No History Until Now!
+</ng-template>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-const BASE_URL = "/api";
+const BASE_URL = "http://localhost:8080";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,10 @@ export class TasksService {
 
   downloadTasksList() {
     return this.http.get(`${BASE_URL}/download`, { responseType: 'blob' })
+  }
+
+  getHistoryLogs() {
+    return this.http.get(`${BASE_URL}/history/logs`)
   }
 
   shownewForm(): void {
