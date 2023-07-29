@@ -22,23 +22,27 @@
     <mat-card-header>
       <div class="card-header">
         <mat-card-title>{{task.title}}</mat-card-title>
-        <span class="priority"
-          [ngClass]="{'low': task.priority.toUpperCase() === 'LOW', 'medium': task.priority.toUpperCase() === 'MEDIUM','high': task.priority.toUpperCase() === 'HIGH'}">{{task.priority
-          | titlecase}}</span>
-        <span class="status"
-          [ngClass]="{'todo': task.status === 'To-Do', 'inprogress': task.status === 'In-Progress','completed': task.status === 'Completed'}">{{task.status}}</span>
+        <div class="chips">
+          <span class="priority"
+            [ngClass]="{'low': task.priority.toUpperCase() === 'LOW', 'medium': task.priority.toUpperCase() === 'MEDIUM','high': task.priority.toUpperCase() === 'HIGH'}">{{task.priority
+            | titlecase}}</span>
+          <span class="status"
+            [ngClass]="{'todo': task.status === 'To-Do', 'inprogress': task.status === 'In-Progress','completed': task.status === 'Completed'}">{{task.status}}</span>
+        </div>
       </div>
     </mat-card-header>
     <mat-card-content>
       <p>Due: {{task.duedate}}</p>
       <p>{{task.description}}</p>
     </mat-card-content>
-    <mat-card-actions>
-      <button class="card-btn" mat-fab color="gray" (click)="openDialog(task)"><mat-icon>edit</mat-icon></button>
-      <button class="card-btn" mat-fab color="warn" (click)="onDelete(task._id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-actions>
+    <div class="btn-wrapper">
+      <mat-card-actions>
+        <button class="card-btn" mat-fab color="gray" (click)="openDialog(task)"><mat-icon>edit</mat-icon></button>
+        <button class="card-btn" mat-fab color="warn" (click)="onDelete(task._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </div>
   </mat-card>
 
 

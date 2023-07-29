@@ -4,6 +4,10 @@ h2 {
   text-align: center;
 }
 
+.btn-wrapper {
+  padding: 8px;
+}
+
 .btn {
   button {
     height: 55px;
@@ -80,6 +84,11 @@ h2 {
   }
 }
 
+.chips {
+  display: flex;
+  gap: 8px;
+}
+
 .tasks-list {
   display: flex;
   justify-content: space-between;
@@ -97,8 +106,8 @@ h2 {
 .btn-div {
   display: flex;
   justify-content: center;
-  margin: 16px 0;
-
+  margin: 16px;
+  gap: 12px
 }
 
 .download-btn {
@@ -116,6 +125,7 @@ h2 {
     align-items: center;
     gap: 4px;
   }
+
 
   .card-header {
     display: flex;
